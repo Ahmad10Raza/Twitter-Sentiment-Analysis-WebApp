@@ -7,11 +7,7 @@ st.set_page_config(
      page_icon="🧊",
      layout="wide",
      initial_sidebar_state="expanded",
-     menu_items={
-         'Get Help': 'https://github.com/everydaycodings/Data-Analysis-Web-App',
-         'Report a bug': "https://github.com/everydaycodings/Data-Analysis-Web-App/issues/new",
-         'About': "# This is a header. This is an *extremely* cool app!"
-     }
+     
 )
 
 

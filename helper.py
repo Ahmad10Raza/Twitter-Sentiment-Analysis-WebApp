@@ -31,21 +31,72 @@ emoji_pattern = re.compile("["
 
 
 
-def twitter_connection():
+# def twitter_connection():
 
-    config = configparser.ConfigParser()
-    config.read("config.ini")
+#     config = configparser.ConfigParser()
+#     config.read("config.ini")
 
-    api_key = config["twitter"]["UiXV7HQe2raV3EpYXbEYpi1jqE"]
-    api_key_secret = config["twitter"]["PeMLtrstn8HcqIG3rVDFtn7tsqBoRw66Fo3b2Je2DoSGoKrNnj"]
-    access_token = config["twitter"]["1299634175792775168-xw8hBQ2N11M8DswwbJIcv9c0GdbUpH"]
+#     api_key = config["twitter"]["Fbeo0BUgTPkLbIDAgk4sv16XR"]
+#     api_key_secret = config["twitter"]["UOJcIKbvNEaTuBNSkDGThwCAMLhiZXTYZIApUk0EujrIkqhXMt"]
+#     #access_token = config["twitter"]["1686392006501875712-II0jJvbgI36bEtuIUI1VyCSV9wDkjF"]
 
-    auth = tweepy.OAuthHandler(api_key, api_key_secret)
+#     auth = tweepy.OAuthHandler(api_key, api_key_secret)
+#     api = tweepy.API(auth)
+
+#     return api
+
+
+
+def twitter_connection(api_key, api_secret_key, access_token, access_token_secret):
+  """
+  Establishes a connection to the Twitter API using the provided credentials.
+
+  Args:
+    api_key: Consumer key obtained from Twitter developer portal.
+    api_secret_key: Consumer secret obtained from Twitter developer portal.
+    access_token: Access token obtained through OAuth process.
+    access_token_secret: Access token secret obtained through OAuth process.
+
+  Returns:
+    A tweepy API object if connection is successful, None otherwise.
+  """
+
+  try:
+    auth = tweepy.OAuthHandler(api_key, api_secret_key)
+    auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
-
+    # Verify authentication
+    api.verify_credentials()
+    print("Successfully connected to Twitter API.")
     return api
+  except Exception as e:
+    print("Error connecting to Twitter API:", e)
+    return None
 
-api = twitter_connection()
+# Example usage
+api_key = "Y2OFR1v042cN2yBECV7c8xnqf"
+api_secret_key = "ftM02cb66zANtqUtoT20G2qXrY8yTTcVoUR9gGZZpTh8wTgCOB"
+access_token = "1686392006501875712-PmYEX7YiN8MmQkv17zKU61NzFnHL9E"
+access_token_secret = "oOa4jgJfZpIxrD7RjvX3pP8e9Jb4rfyV0riP7pc95bVpI"
+
+api = twitter_connection(api_key, api_secret_key, access_token, access_token_secret)
+
+if api is not None:
+  # Use the API object for making Twitter requests
+  # Example: Get user timeline
+  user_timeline = api.user_timeline(screen_name="username", count=10)
+  print(user_timeline)
+else:
+  print("Failed to connect to Twitter API.")
+
+
+# Example usage:
+# your_api_key = 'Fbeo0BUgTPkLbIDAgk4sv16XR'
+# your_api_key_secret = 'UOJcIKbvNEaTuBNSkDGThwCAMLhiZXTYZIApUk0EujrIkqhXMt'
+
+api = twitter_connection(your_api_key, your_api_key_secret)
+
+#api = twitter_connection()
 
 
 def cleanTxt(text):
