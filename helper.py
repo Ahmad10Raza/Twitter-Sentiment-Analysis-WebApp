@@ -74,10 +74,10 @@ def twitter_connection(api_key, api_secret_key, access_token, access_token_secre
     return None
 
 # Example usage
-api_key = ""
-api_secret_key = ""
-access_token = ""
-access_token_secret = ""
+api_key = "Gf42otsEMolK6nlyt6xW14lP8"
+api_secret_key = "Xn1Qf9EPB0HLusT6HzO3mWsdnjeWpIrtEBuQVrBbH0ByLQiRtC"
+access_token = "1736020341871493120-d0kWPWOxS09CE434vYD7q5sEf4EeGA"
+access_token_secret = "pwSEGB9UFbLCFTAhkD4FmWXtcvfVG98tdzbBs4waeUPms"
 
 api = twitter_connection(api_key, api_secret_key, access_token, access_token_secret)
 
@@ -94,7 +94,7 @@ else:
 # your_api_key = 'Fbeo0BUgTPkLbIDAgk4sv16XR'
 # your_api_key_secret = 'UOJcIKbvNEaTuBNSkDGThwCAMLhiZXTYZIApUk0EujrIkqhXMt'
 
-api = twitter_connection(your_api_key, your_api_key_secret)
+api = twitter_connection(api_key, api_secret_key)
 
 #api = twitter_connection()
 
